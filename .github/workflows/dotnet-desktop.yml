@@ -35,6 +35,6 @@ jobs:
 #      uses: microsoft/setup-msbuild@v2
 
     - name: Build application
-      run: dotnet build $env:Solution_Name --configuration/p:Configuration=$env:Configuration
+      run: dotnet build --configuration/p:Configuration=$env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
