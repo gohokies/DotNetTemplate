@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: .NET Template
 
 on:
   push:
@@ -12,13 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Debug, Release]
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
-
-    env:
-      Solution_Name: DotNetTemplate       
 
     steps:
     - name: Checkout
@@ -26,12 +22,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Install .NET Core
+    - name: Install .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
-    - name: Build application
-      run: dotnet build
-      env:
-        Configuration: ${{ matrix.configuration }}
+    - name: Build Debug
+      run: dotnet build --configuration Debug
+
+    - name: Build Release
+      run: dotnet build --configuration Release
