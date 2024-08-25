@@ -31,10 +31,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
-
     - name: Build application
-      run: msbuild /t:Restore /p:Configuration=$env:Configuration
+      run: dotnet build
       env:
         Configuration: ${{ matrix.configuration }}
