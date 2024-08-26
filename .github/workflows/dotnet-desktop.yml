@@ -30,5 +30,11 @@ jobs:
     - name: Build Debug
       run: dotnet build --configuration Debug
 
+    - name: Test Debug
+      run: dotnet test --configuration Debug
+
     - name: Build Release
       run: dotnet build --configuration Release
+
+    - name: Test Release
+      run: dotnet test --configuration Release
